@@ -1,0 +1,30 @@
+{
+  "id": "tc_004",
+  "category": "code_switch",
+  "audio": "tc_004.wav",
+  "description": "Delivery delay complaint with leh particle",
+  "reference_transcript": "I never receive my order leh, already 40 minutes",
+  "expected_intent": "get_order",
+  "expected_tools": [
+    {
+      "name": "list_orders"
+    },
+    {
+      "name": "get_order",
+      "required_args": {
+        "order_id": "ORD-8825"
+      }
+    }
+  ],
+  "forbidden_tools": [],
+  "expected_response_themes": [
+    "acknowledge",
+    "delivery status",
+    "ETA"
+  ],
+  "noise_condition": "clean",
+  "singlish_features": [
+    "leh",
+    "never"
+  ]
+}

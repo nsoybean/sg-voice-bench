@@ -1,0 +1,43 @@
+{
+  "id": "tc_012",
+  "category": "singlish_grammar",
+  "audio": "tc_012.wav",
+  "description": "Cancel kaya toast with topic-prominent want...can",
+  "reference_transcript": "My kaya toast, want to cancel can?",
+  "expected_intent": "cancel_order",
+  "expected_tools": [
+    {
+      "name": "list_orders"
+    },
+    {
+      "name": "cancel_order",
+      "required_args": {
+        "order_id": "ORD-8830"
+      }
+    }
+  ],
+  "forbidden_tools": [
+    {
+      "name": "cancel_order",
+      "args": {
+        "order_id": "ORD-8825"
+      }
+    },
+    {
+      "name": "cancel_order",
+      "args": {
+        "order_id": "ORD-8822"
+      }
+    }
+  ],
+  "expected_response_themes": [
+    "confirmed",
+    "cancellation",
+    "refund"
+  ],
+  "noise_condition": "clean",
+  "singlish_features": [
+    "topic-prominent",
+    "want to...can"
+  ]
+}

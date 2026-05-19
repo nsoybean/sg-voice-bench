@@ -1,0 +1,44 @@
+{
+  "id": "tc_015",
+  "category": "noise",
+  "audio": "tc_015.wav",
+  "description": "tc_012 with medium hawker noise (~12dB SNR)",
+  "reference_transcript": "My kaya toast, want to cancel can?",
+  "expected_intent": "cancel_order",
+  "expected_tools": [
+    {
+      "name": "list_orders"
+    },
+    {
+      "name": "cancel_order",
+      "required_args": {
+        "order_id": "ORD-8830"
+      }
+    }
+  ],
+  "forbidden_tools": [
+    {
+      "name": "cancel_order",
+      "args": {
+        "order_id": "ORD-8825"
+      }
+    },
+    {
+      "name": "cancel_order",
+      "args": {
+        "order_id": "ORD-8822"
+      }
+    }
+  ],
+  "expected_response_themes": [
+    "confirmed",
+    "cancellation",
+    "refund"
+  ],
+  "noise_condition": "medium_12db",
+  "singlish_features": [
+    "topic-prominent",
+    "want to...can"
+  ],
+  "_derived_from": "tc_012"
+}

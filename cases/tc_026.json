@@ -1,0 +1,37 @@
+{
+  "id": "tc_026",
+  "category": "intent_switch",
+  "audio": "tc_026.wav",
+  "description": "Cancel kaya toast → switch to chicken rice",
+  "reference_transcript": "Cancel the kaya toast, no wait, the chicken rice one lah",
+  "expected_intent": "cancel_order",
+  "expected_tools": [
+    {
+      "name": "list_orders"
+    },
+    {
+      "name": "cancel_order",
+      "required_args": {
+        "order_id": "ORD-8825"
+      }
+    }
+  ],
+  "forbidden_tools": [
+    {
+      "name": "cancel_order",
+      "args": {
+        "order_id": "ORD-8830"
+      }
+    }
+  ],
+  "expected_response_themes": [
+    "confirmed",
+    "cancellation",
+    "chicken rice"
+  ],
+  "noise_condition": "clean",
+  "singlish_features": [
+    "mid-utterance switch",
+    "lah"
+  ]
+}

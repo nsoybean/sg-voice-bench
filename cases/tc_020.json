@@ -1,0 +1,44 @@
+{
+  "id": "tc_020",
+  "category": "multilingual",
+  "audio": "tc_020.wav",
+  "description": "English + Malay cancel (boleh = can)",
+  "reference_transcript": "Eh boleh cancel my kaya toast order?",
+  "expected_intent": "cancel_order",
+  "expected_tools": [
+    {
+      "name": "list_orders"
+    },
+    {
+      "name": "cancel_order",
+      "required_args": {
+        "order_id": "ORD-8830"
+      }
+    }
+  ],
+  "forbidden_tools": [
+    {
+      "name": "cancel_order",
+      "args": {
+        "order_id": "ORD-8825"
+      }
+    },
+    {
+      "name": "cancel_order",
+      "args": {
+        "order_id": "ORD-8822"
+      }
+    }
+  ],
+  "expected_response_themes": [
+    "confirmed",
+    "cancellation",
+    "refund"
+  ],
+  "noise_condition": "clean",
+  "singlish_features": [
+    "code_switch_ms",
+    "boleh",
+    "eh"
+  ]
+}

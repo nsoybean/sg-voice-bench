@@ -1,8 +1,8 @@
 {
-  "id": "tc_001",
-  "category": "code_switch",
-  "audio": "tc_001.wav",
-  "description": "Cancel most recent order using Singlish",
+  "id": "tc_017",
+  "category": "noise",
+  "audio": "tc_017.wav",
+  "description": "tc_001 with heavy hawker noise (~6dB SNR)",
   "reference_transcript": "Eh I want to cancel my last order lah, the one I just placed",
   "expected_intent": "cancel_order",
   "expected_tools": [
@@ -22,9 +22,10 @@
     "cancellation",
     "refund"
   ],
-  "noise_condition": "clean",
+  "noise_condition": "heavy_6db",
   "singlish_features": [
     "lah",
     "eh"
-  ]
+  ],
+  "_derived_from": "tc_001"
 }

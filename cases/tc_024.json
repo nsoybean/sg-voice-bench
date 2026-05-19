@@ -1,0 +1,33 @@
+{
+  "id": "tc_024",
+  "category": "intent_switch",
+  "audio": "tc_024.wav",
+  "description": "Refund chicken rice → switch to laksa",
+  "reference_transcript": "Refund the chicken rice one, actually never mind, refund the laksa instead",
+  "expected_intent": "check_refund_status",
+  "expected_tools": [
+    {
+      "name": "check_refund_status",
+      "required_args": {
+        "order_id": "ORD-8822"
+      }
+    }
+  ],
+  "forbidden_tools": [
+    {
+      "name": "check_refund_status",
+      "args": {
+        "order_id": "ORD-8825"
+      }
+    }
+  ],
+  "expected_response_themes": [
+    "refund status",
+    "laksa",
+    "processing"
+  ],
+  "noise_condition": "clean",
+  "singlish_features": [
+    "mid-utterance switch"
+  ]
+}

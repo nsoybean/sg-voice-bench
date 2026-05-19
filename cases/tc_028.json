@@ -1,0 +1,40 @@
+{
+  "id": "tc_028",
+  "category": "ambiguous_ref",
+  "audio": "tc_028.wav",
+  "description": "Check my refund (one refund exists, but agent shouldn't assume)",
+  "reference_transcript": "Check my refund",
+  "expected_intent": "list_refunds",
+  "expected_tools": [
+    {
+      "name": "list_refunds"
+    }
+  ],
+  "forbidden_tools": [
+    {
+      "name": "check_refund_status",
+      "args": {
+        "order_id": "ORD-8830"
+      }
+    },
+    {
+      "name": "check_refund_status",
+      "args": {
+        "order_id": "ORD-8825"
+      }
+    },
+    {
+      "name": "check_refund_status",
+      "args": {
+        "order_id": "ORD-8815"
+      }
+    }
+  ],
+  "expected_response_themes": [
+    "refund status",
+    "amount",
+    "processing"
+  ],
+  "noise_condition": "clean",
+  "singlish_features": []
+}

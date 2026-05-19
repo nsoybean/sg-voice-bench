@@ -1,0 +1,49 @@
+{
+  "id": "tc_010",
+  "category": "singlish_grammar",
+  "audio": "tc_010.wav",
+  "description": "Cancel chicken rice with topic-prominent structure",
+  "reference_transcript": "The chicken rice one, spoil already, cancel",
+  "expected_intent": "cancel_order",
+  "expected_tools": [
+    {
+      "name": "list_orders"
+    },
+    {
+      "name": "cancel_order",
+      "required_args": {
+        "order_id": "ORD-8825"
+      }
+    }
+  ],
+  "forbidden_tools": [
+    {
+      "name": "cancel_order",
+      "args": {
+        "order_id": "ORD-8830"
+      }
+    },
+    {
+      "name": "cancel_order",
+      "args": {
+        "order_id": "ORD-8822"
+      }
+    },
+    {
+      "name": "cancel_order",
+      "args": {
+        "order_id": "ORD-8815"
+      }
+    }
+  ],
+  "expected_response_themes": [
+    "confirmed",
+    "cancellation",
+    "refund"
+  ],
+  "noise_condition": "clean",
+  "singlish_features": [
+    "topic-prominent",
+    "already"
+  ]
+}

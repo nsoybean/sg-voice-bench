@@ -1,0 +1,28 @@
+{
+  "id": "tc_006",
+  "category": "code_switch",
+  "audio": "tc_006.wav",
+  "description": "Payment failure with already...one pattern",
+  "reference_transcript": "Already paid one, but say payment failed",
+  "expected_intent": "escalate_to_human",
+  "expected_tools": [
+    {
+      "name": "list_orders"
+    },
+    {
+      "name": "escalate_to_human"
+    }
+  ],
+  "forbidden_tools": [
+    "cancel_order"
+  ],
+  "expected_response_themes": [
+    "acknowledge",
+    "payment",
+    "escalate"
+  ],
+  "noise_condition": "clean",
+  "singlish_features": [
+    "already...one"
+  ]
+}

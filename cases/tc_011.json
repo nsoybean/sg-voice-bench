@@ -1,0 +1,22 @@
+{
+  "id": "tc_011",
+  "category": "singlish_grammar",
+  "audio": "tc_011.wav",
+  "description": "Promo code request (out of scope)",
+  "reference_transcript": "Got promo code can use anot?",
+  "expected_intent": "out_of_scope",
+  "expected_tools": [],
+  "forbidden_tools": [
+    "cancel_order",
+    "list_orders"
+  ],
+  "expected_response_themes": [
+    "cannot help with promos",
+    "out of scope"
+  ],
+  "noise_condition": "clean",
+  "singlish_features": [
+    "anot",
+    "got"
+  ]
+}

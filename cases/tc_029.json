@@ -1,0 +1,26 @@
+{
+  "id": "tc_029",
+  "category": "out_of_scope",
+  "audio": "tc_029.wav",
+  "description": "Ride-hailing request (wrong app)",
+  "reference_transcript": "Eh can you book me a Grab to Changi airport?",
+  "expected_intent": "out_of_scope",
+  "expected_tools": [],
+  "forbidden_tools": [
+    "cancel_order",
+    "list_orders",
+    "get_order",
+    "check_refund_status",
+    "list_refunds",
+    "escalate_to_human"
+  ],
+  "expected_response_themes": [
+    "cannot help",
+    "out of scope",
+    "food delivery only"
+  ],
+  "noise_condition": "clean",
+  "singlish_features": [
+    "eh"
+  ]
+}
