@@ -1,7 +1,7 @@
 {
   "id": "tc_023",
   "category": "intent_switch",
-  "audio": "tc_023.wav",
+  "audio": "tc_023.m4a",
   "description": "Cancel → switch to status check",
   "reference_transcript": "Cancel my last order — wait no, just check the status first",
   "expected_intent": "get_order",
@@ -16,15 +16,8 @@
       }
     }
   ],
-  "forbidden_tools": [
-    "cancel_order"
-  ],
-  "expected_response_themes": [
-    "status",
-    "order info"
-  ],
+  "forbidden_tools": ["cancel_order"],
+  "expected_response_themes": ["status", "order info"],
   "noise_condition": "clean",
-  "singlish_features": [
-    "mid-utterance correction"
-  ]
+  "singlish_features": ["mid-utterance correction"]
 }

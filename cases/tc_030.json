@@ -1,7 +1,7 @@
 {
   "id": "tc_030",
   "category": "out_of_scope",
-  "audio": "tc_030.wav",
+  "audio": "tc_030.m4a",
   "description": "Weather query (completely off-topic)",
   "reference_transcript": "What's the weather like later, going to rain or not?",
   "expected_intent": "out_of_scope",
@@ -20,7 +20,5 @@
     "food delivery only"
   ],
   "noise_condition": "clean",
-  "singlish_features": [
-    "can...or not"
-  ]
+  "singlish_features": ["can...or not"]
 }

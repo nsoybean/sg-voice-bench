@@ -1,7 +1,7 @@
 {
   "id": "tc_019",
   "category": "multilingual",
-  "audio": "tc_019.wav",
+  "audio": "tc_019.m4a",
   "description": "English + Mandarin order confirmation check",
   "reference_transcript": "我的 order confirm already?",
   "expected_intent": "list_orders",
@@ -11,14 +11,7 @@
     }
   ],
   "forbidden_tools": [],
-  "expected_response_themes": [
-    "status",
-    "which order",
-    "clarify"
-  ],
+  "expected_response_themes": ["status", "which order", "clarify"],
   "noise_condition": "clean",
-  "singlish_features": [
-    "code_switch_zh",
-    "confirm as verb"
-  ]
+  "singlish_features": ["code_switch_zh", "confirm as verb"]
 }

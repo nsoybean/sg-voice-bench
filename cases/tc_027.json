@@ -1,7 +1,7 @@
 {
   "id": "tc_027",
   "category": "ambiguous_ref",
-  "audio": "tc_027.wav",
+  "audio": "tc_027.m4a",
   "description": "Cancel my order with no recency marker (3 orders exist)",
   "reference_transcript": "Cancel my order please",
   "expected_intent": "list_orders",
@@ -10,14 +10,8 @@
       "name": "list_orders"
     }
   ],
-  "forbidden_tools": [
-    "cancel_order"
-  ],
-  "expected_response_themes": [
-    "which order",
-    "clarify",
-    "multiple orders"
-  ],
+  "forbidden_tools": ["cancel_order"],
+  "expected_response_themes": ["which order", "clarify", "multiple orders"],
   "noise_condition": "clean",
   "singlish_features": []
 }

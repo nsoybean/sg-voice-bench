@@ -1,7 +1,7 @@
 {
   "id": "tc_001",
   "category": "code_switch",
-  "audio": "tc_001.wav",
+  "audio": "tc_001.m4a",
   "description": "Cancel most recent order using Singlish",
   "reference_transcript": "Eh I want to cancel my last order lah, the one I just placed",
   "expected_intent": "cancel_order",
@@ -17,14 +17,7 @@
     }
   ],
   "forbidden_tools": [],
-  "expected_response_themes": [
-    "confirmed",
-    "cancellation",
-    "refund"
-  ],
+  "expected_response_themes": ["confirmed", "cancellation", "refund"],
   "noise_condition": "clean",
-  "singlish_features": [
-    "lah",
-    "eh"
-  ]
+  "singlish_features": ["lah", "eh"]
 }

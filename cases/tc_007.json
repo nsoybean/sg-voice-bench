@@ -1,7 +1,7 @@
 {
   "id": "tc_007",
   "category": "singlish_grammar",
-  "audio": "tc_007.wav",
+  "audio": "tc_007.m4a",
   "description": "Refund status check for laksa",
   "reference_transcript": "Can refund my laksa order or not?",
   "expected_intent": "check_refund_status",
@@ -13,15 +13,8 @@
       }
     }
   ],
-  "forbidden_tools": [
-    "cancel_order"
-  ],
-  "expected_response_themes": [
-    "refund status",
-    "processing"
-  ],
+  "forbidden_tools": ["cancel_order"],
+  "expected_response_themes": ["refund status", "processing"],
   "noise_condition": "clean",
-  "singlish_features": [
-    "can...or not"
-  ]
+  "singlish_features": ["can...or not"]
 }

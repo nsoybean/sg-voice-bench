@@ -1,7 +1,7 @@
 {
   "id": "tc_013",
   "category": "noise",
-  "audio": "tc_013.wav",
+  "audio": "tc_013.m4a",
   "description": "tc_001 with light hawker noise (~20dB SNR)",
   "reference_transcript": "Eh I want to cancel my last order lah, the one I just placed",
   "expected_intent": "cancel_order",
@@ -17,15 +17,8 @@
     }
   ],
   "forbidden_tools": [],
-  "expected_response_themes": [
-    "confirmed",
-    "cancellation",
-    "refund"
-  ],
+  "expected_response_themes": ["confirmed", "cancellation", "refund"],
   "noise_condition": "light_20db",
-  "singlish_features": [
-    "lah",
-    "eh"
-  ],
+  "singlish_features": ["lah", "eh"],
   "_derived_from": "tc_001"
 }

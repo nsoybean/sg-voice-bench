@@ -1,7 +1,7 @@
 {
   "id": "tc_016",
   "category": "noise",
-  "audio": "tc_016.wav",
+  "audio": "tc_016.m4a",
   "description": "tc_009 with medium hawker noise",
   "reference_transcript": "How come so long never arrive?",
   "expected_intent": "get_order",
@@ -17,15 +17,8 @@
     }
   ],
   "forbidden_tools": [],
-  "expected_response_themes": [
-    "acknowledge",
-    "delivery status",
-    "ETA"
-  ],
+  "expected_response_themes": ["acknowledge", "delivery status", "ETA"],
   "noise_condition": "medium_12db",
-  "singlish_features": [
-    "how come",
-    "never"
-  ],
+  "singlish_features": ["how come", "never"],
   "_derived_from": "tc_009"
 }

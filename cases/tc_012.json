@@ -1,7 +1,7 @@
 {
   "id": "tc_012",
   "category": "singlish_grammar",
-  "audio": "tc_012.wav",
+  "audio": "tc_012.m4a",
   "description": "Cancel kaya toast with topic-prominent want...can",
   "reference_transcript": "My kaya toast, want to cancel can?",
   "expected_intent": "cancel_order",
@@ -30,14 +30,7 @@
       }
     }
   ],
-  "expected_response_themes": [
-    "confirmed",
-    "cancellation",
-    "refund"
-  ],
+  "expected_response_themes": ["confirmed", "cancellation", "refund"],
   "noise_condition": "clean",
-  "singlish_features": [
-    "topic-prominent",
-    "want to...can"
-  ]
+  "singlish_features": ["topic-prominent", "want to...can"]
 }

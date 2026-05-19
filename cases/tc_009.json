@@ -1,7 +1,7 @@
 {
   "id": "tc_009",
   "category": "singlish_grammar",
-  "audio": "tc_009.wav",
+  "audio": "tc_009.m4a",
   "description": "Delivery delay with how come/never",
   "reference_transcript": "How come so long never arrive?",
   "expected_intent": "get_order",
@@ -17,14 +17,7 @@
     }
   ],
   "forbidden_tools": [],
-  "expected_response_themes": [
-    "acknowledge",
-    "delivery status",
-    "ETA"
-  ],
+  "expected_response_themes": ["acknowledge", "delivery status", "ETA"],
   "noise_condition": "clean",
-  "singlish_features": [
-    "how come",
-    "never"
-  ]
+  "singlish_features": ["how come", "never"]
 }

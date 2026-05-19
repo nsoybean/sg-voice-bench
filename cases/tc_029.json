@@ -1,7 +1,7 @@
 {
   "id": "tc_029",
   "category": "out_of_scope",
-  "audio": "tc_029.wav",
+  "audio": "tc_029.m4a",
   "description": "Ride-hailing request (wrong app)",
   "reference_transcript": "Eh can you book me a Grab to Changi airport?",
   "expected_intent": "out_of_scope",
@@ -20,7 +20,5 @@
     "food delivery only"
   ],
   "noise_condition": "clean",
-  "singlish_features": [
-    "eh"
-  ]
+  "singlish_features": ["eh"]
 }

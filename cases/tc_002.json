@@ -1,7 +1,7 @@
 {
   "id": "tc_002",
   "category": "code_switch",
-  "audio": "tc_002.wav",
+  "audio": "tc_002.m4a",
   "description": "Return request with strong Singlish particles",
   "reference_transcript": "Wah this one wrong size sia, want to return",
   "expected_intent": "escalate_to_human",

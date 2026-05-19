@@ -1,7 +1,7 @@
 {
   "id": "tc_014",
   "category": "noise",
-  "audio": "tc_014.wav",
+  "audio": "tc_014.m4a",
   "description": "tc_003 with light hawker noise",
   "reference_transcript": "Can check my order status or not?",
   "expected_intent": "list_orders",
@@ -10,17 +10,9 @@
       "name": "list_orders"
     }
   ],
-  "forbidden_tools": [
-    "cancel_order"
-  ],
-  "expected_response_themes": [
-    "status",
-    "order info",
-    "which order"
-  ],
+  "forbidden_tools": ["cancel_order"],
+  "expected_response_themes": ["status", "order info", "which order"],
   "noise_condition": "light_20db",
-  "singlish_features": [
-    "can...or not"
-  ],
+  "singlish_features": ["can...or not"],
   "_derived_from": "tc_003"
 }

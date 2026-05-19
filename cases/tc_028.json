@@ -1,7 +1,7 @@
 {
   "id": "tc_028",
   "category": "ambiguous_ref",
-  "audio": "tc_028.wav",
+  "audio": "tc_028.m4a",
   "description": "Check my refund (one refund exists, but agent shouldn't assume)",
   "reference_transcript": "Check my refund",
   "expected_intent": "list_refunds",
@@ -30,11 +30,7 @@
       }
     }
   ],
-  "expected_response_themes": [
-    "refund status",
-    "amount",
-    "processing"
-  ],
+  "expected_response_themes": ["refund status", "amount", "processing"],
   "noise_condition": "clean",
   "singlish_features": []
 }

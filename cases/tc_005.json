@@ -1,7 +1,7 @@
 {
   "id": "tc_005",
   "category": "code_switch",
-  "audio": "tc_005.wav",
+  "audio": "tc_005.m4a",
   "description": "Delivery driver lost, needs human help",
   "reference_transcript": "The delivery guy cannot find my house, how ah?",
   "expected_intent": "escalate_to_human",
@@ -10,16 +10,8 @@
       "name": "escalate_to_human"
     }
   ],
-  "forbidden_tools": [
-    "cancel_order"
-  ],
-  "expected_response_themes": [
-    "help",
-    "escalate",
-    "human"
-  ],
+  "forbidden_tools": ["cancel_order"],
+  "expected_response_themes": ["help", "escalate", "human"],
   "noise_condition": "clean",
-  "singlish_features": [
-    "how ah"
-  ]
+  "singlish_features": ["how ah"]
 }

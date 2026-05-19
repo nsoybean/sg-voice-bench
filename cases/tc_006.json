@@ -1,7 +1,7 @@
 {
   "id": "tc_006",
   "category": "code_switch",
-  "audio": "tc_006.wav",
+  "audio": "tc_006.m4a",
   "description": "Payment failure with already...one pattern",
   "reference_transcript": "Already paid one, but say payment failed",
   "expected_intent": "escalate_to_human",
@@ -13,16 +13,8 @@
       "name": "escalate_to_human"
     }
   ],
-  "forbidden_tools": [
-    "cancel_order"
-  ],
-  "expected_response_themes": [
-    "acknowledge",
-    "payment",
-    "escalate"
-  ],
+  "forbidden_tools": ["cancel_order"],
+  "expected_response_themes": ["acknowledge", "payment", "escalate"],
   "noise_condition": "clean",
-  "singlish_features": [
-    "already...one"
-  ]
+  "singlish_features": ["already...one"]
 }

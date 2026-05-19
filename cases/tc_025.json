@@ -1,7 +1,7 @@
 {
   "id": "tc_025",
   "category": "intent_switch",
-  "audio": "tc_025.wav",
+  "audio": "tc_025.m4a",
   "description": "Cancel → switch to delivery time check",
   "reference_transcript": "Help me cancel — eh actually can check delivery time first?",
   "expected_intent": "get_order",
@@ -16,16 +16,8 @@
       }
     }
   ],
-  "forbidden_tools": [
-    "cancel_order"
-  ],
-  "expected_response_themes": [
-    "delivery status",
-    "ETA"
-  ],
+  "forbidden_tools": ["cancel_order"],
+  "expected_response_themes": ["delivery status", "ETA"],
   "noise_condition": "clean",
-  "singlish_features": [
-    "mid-utterance switch",
-    "eh"
-  ]
+  "singlish_features": ["mid-utterance switch", "eh"]
 }

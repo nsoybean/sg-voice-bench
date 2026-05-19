@@ -1,7 +1,7 @@
 {
   "id": "tc_021",
   "category": "multilingual",
-  "audio": "tc_021.wav",
+  "audio": "tc_021.m4a",
   "description": "Mandarin politeness + English refund check",
   "reference_transcript": "麻烦 check my refund status",
   "expected_intent": "check_refund_status",
@@ -10,17 +10,8 @@
       "name": "list_refunds"
     }
   ],
-  "forbidden_tools": [
-    "cancel_order"
-  ],
-  "expected_response_themes": [
-    "refund status",
-    "processing",
-    "amount"
-  ],
+  "forbidden_tools": ["cancel_order"],
+  "expected_response_themes": ["refund status", "processing", "amount"],
   "noise_condition": "clean",
-  "singlish_features": [
-    "code_switch_zh",
-    "麻烦"
-  ]
+  "singlish_features": ["code_switch_zh", "麻烦"]
 }
