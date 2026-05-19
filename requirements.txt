@@ -1,0 +1,6 @@
+openai-agents>=0.0.5
+openai>=1.50.0
+jiwer>=3.0.0
+pydub>=0.25.1
+numpy>=1.26.0
+python-dotenv>=1.0.0
