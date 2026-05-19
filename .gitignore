@@ -205,6 +205,9 @@ cython_debug/
 # Temporary file for partial code execution
 tempCodeRunnerFile.py
 
+# Benchmark results (generated locally, not committed)
+results/
+
 # Ruff stuff:
 .ruff_cache/
 

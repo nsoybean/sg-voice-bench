@@ -1,0 +1,16 @@
+{
+  "id": "tc_001",
+  "category": "code_switch",
+  "description": "User cancels their most recent order using Singlish phrasing",
+  "audio": "tc_001.m4a",
+  "reference_transcript": "Eh I want to cancel my last order lah, the one I just placed",
+  "expected_intent": "cancel_order",
+  "expected_tools": [
+    { "name": "list_orders" },
+    { "name": "cancel_order", "required_args": { "order_id": "ORD-8830" } }
+  ],
+  "forbidden_tools": [],
+  "expected_response_themes": ["confirmed", "cancellation", "refund"],
+  "noise_condition": "clean",
+  "singlish_features": ["lah", "eh"]
+}

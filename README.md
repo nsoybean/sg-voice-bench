@@ -34,6 +34,8 @@ python benchmark.py cases/tc_001.json      # single case
 python benchmark.py cases/ results/run.json
 ```
 
+Each run saves a timestamped JSON report to `results/` (e.g. `results/20250115T143000_report.json`). That folder is gitignored — results stay local and don't get committed.
+
 ---
 
 ## Results
@@ -57,12 +59,12 @@ See [FINDINGS.md](./FINDINGS.md) for the interpretation and what surprised me.
 ## How it works
 
 ```
-audio.wav → VoicePipeline → ┌─ transcript ─────┐
+audio.m4a → VoicePipeline → ┌─ transcript ─────┐
                             ├─ tool calls ─────┤ → 3 scorers → JSON report
                             └─ response text ──┘
 ```
 
-Each test case is a `.wav` + `.json` pair. The JSON specifies the reference transcript, the expected tool trajectory (with concrete arg values from the seeded state), forbidden tools the agent must NOT call, and themes the response should cover. The runner resets state before each case so they don't leak.
+Each test case is a `.m4a` + `.json` pair. The JSON specifies the reference transcript, the expected tool trajectory (with concrete arg values from the seeded state), forbidden tools the agent must NOT call, and themes the response should cover. The runner resets state before each case so they don't leak.
 
 The agent is a food-delivery customer support bot with six tools (`list_orders`, `get_order`, `cancel_order`, `list_refunds`, `check_refund_status`, `escalate_to_human`) backed by a small in-memory data store of four orders and one in-flight refund.
 
