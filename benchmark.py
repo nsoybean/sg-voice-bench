@@ -14,7 +14,7 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from runner.evaluators import score_response, score_stt, score_tool_calls
+from runner.evaluators import check_vad_cut, score_response, score_stt, score_tool_calls
 from runner.pipeline import run_case
 
 load_dotenv()
@@ -46,14 +46,22 @@ async def run_benchmark(cases_dir: str, out: str = "results/report.json"):
             print(f"{case['id']:<8} ERROR: {e}")
             continue
 
-        # evaluted based on three dimension
+        # evaluate across all four dimensions
         stt   = score_stt(trace, case)
+        vad   = check_vad_cut(trace, case, stt)   # uses stt result, cheap
         tools = score_tool_calls(trace, case)
         resp  = score_response(trace, case)
 
+        # Only flag VAD cuts for intent_switch — where early commitment is
+        # structurally harmful. Other categories may legitimately drop
+        # Singlish particles, which would false-positive here.
+        vad_cut_relevant = case["category"] == "intent_switch" and vad["likely_vad_cut"]
+        skip_reason = "vad_cut" if vad_cut_relevant else None
+
         passed = (
-            stt["wer"]                      <= PASS_THRESHOLDS["wer"]
-            and tools["score"]              >= PASS_THRESHOLDS["tool_score"]
+            not vad_cut_relevant                             # VAD cut = automatic fail
+            and stt["wer"]             <= PASS_THRESHOLDS["wer"]
+            and tools["score"]         >= PASS_THRESHOLDS["tool_score"]
             and resp.get("intent_resolved") >= PASS_THRESHOLDS["intent_resolved"]
             and not tools["forbidden_hits"]
         )
@@ -63,9 +71,11 @@ async def run_benchmark(cases_dir: str, out: str = "results/report.json"):
             "category": case["category"],
             "description": case.get("description", ""),
             "stt": stt,
+            "vad": vad,
             "tools": tools,
             "response": resp,
             "passed": passed,
+            "skip_reason": skip_reason,
             "trace": {
                 "transcript": trace["transcript"],
                 "tool_calls": trace["tool_calls"],
@@ -73,11 +83,12 @@ async def run_benchmark(cases_dir: str, out: str = "results/report.json"):
             },
         })
 
+        vad_flag = " (VAD cut)" if vad_cut_relevant else ""
         status = "✓" if passed else "✗"
         print(
             f"{case['id']:<8} {case['category']:<20} "
             f"{stt['wer']:>6.2f} {tools['verdict']:>10} "
-            f"{resp.get('intent_resolved','?'):>8} {status:>6}"
+            f"{resp.get('intent_resolved','?'):>8} {status:>6}{vad_flag}"
         )
 
     # Aggregate by category
@@ -85,13 +96,18 @@ async def run_benchmark(cases_dir: str, out: str = "results/report.json"):
     by_category = {}
     for cat in categories:
         cat_r = [r for r in results if r["category"] == cat]
+        # Exclude VAD-cut cases from tool/response averages — they never had a
+        # fair shot, so including them would drag down category scores unfairly.
+        scoreable = [r for r in cat_r if not r["skip_reason"]]
+        vad_cuts = sum(1 for r in cat_r if r["skip_reason"] == "vad_cut")
         by_category[cat] = {
             "n": len(cat_r),
             "pass_rate": round(sum(r["passed"] for r in cat_r) / len(cat_r), 2),
             "avg_wer": round(sum(r["stt"]["wer"] for r in cat_r) / len(cat_r), 3),
-            "tool_accuracy": round(sum(r["tools"]["score"] for r in cat_r) / len(cat_r), 2),
-            "intent_resolved": round(sum(r["response"].get("intent_resolved", 0) for r in cat_r) / len(cat_r), 2),
+            "tool_accuracy": round(sum(r["tools"]["score"] for r in scoreable) / max(len(scoreable), 1), 2),
+            "intent_resolved": round(sum(r["response"].get("intent_resolved", 0) for r in scoreable) / max(len(scoreable), 1), 2),
             "forbidden_hit_rate": round(sum(1 for r in cat_r if r["tools"]["forbidden_hits"]) / len(cat_r), 2),
+            "vad_cuts": vad_cuts,
         }
 
     report = {
@@ -103,12 +119,13 @@ async def run_benchmark(cases_dir: str, out: str = "results/report.json"):
     }
 
     print(f"\n{'─'*64}")
-    print(f"\n{'Category':<22} {'N':>4} {'Pass%':>7} {'WER':>7} {'Tools':>7} {'Intent':>8} {'Forbid':>8}")
-    print("-" * 66)
+    print(f"\n{'Category':<22} {'N':>4} {'Pass%':>7} {'WER':>7} {'Tools':>7} {'Intent':>8} {'Forbid':>8} {'VAD cuts':>10}")
+    print("-" * 78)
     for cat, s in by_category.items():
         print(f"{cat:<22} {s['n']:>4} {s['pass_rate']*100:>6.0f}% "
               f"{s['avg_wer']:>7.3f} {s['tool_accuracy']:>7.2f} "
-              f"{s['intent_resolved']:>8.2f} {s['forbidden_hit_rate']:>8.2f}")
+              f"{s['intent_resolved']:>8.2f} {s['forbidden_hit_rate']:>8.2f} "
+              f"{s['vad_cuts']:>10}")
 
     Path(out).parent.mkdir(exist_ok=True, parents=True)
     Path(out).write_text(json.dumps(report, indent=2))

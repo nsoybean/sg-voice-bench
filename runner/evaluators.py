@@ -33,7 +33,36 @@ def score_stt(trace: dict, case: dict) -> dict:
     }
 
 
-# --- 2. Tool call accuracy ---
+# --- 2. VAD cut detection ---
+
+def check_vad_cut(trace: dict, case: dict, stt: dict) -> dict:
+    """
+    Detects if VAD likely cut the turn before the user finished speaking.
+    Uses word coverage: if the transcript is much shorter than the reference,
+    the pipeline probably committed to a turn mid-utterance.
+
+    Only meaningful for cases where the full utterance matters — particularly
+    intent_switch category where the correction comes in the second half.
+    The stt argument is accepted for future reuse (e.g. referencing the
+    already-normalised transcript) without re-processing.
+    """
+    reference_words = len(case["reference_transcript"].split())
+    transcript_words = len((trace["transcript"] or "").split())
+    coverage = transcript_words / max(reference_words, 1)
+
+    # 0.6 allows for Singlish particle drops without false-positiving on them.
+    # Caller is responsible for only acting on this flag in relevant categories.
+    likely_cut = coverage < 0.6
+
+    return {
+        "coverage": round(coverage, 2),
+        "likely_vad_cut": likely_cut,
+        "reference_words": reference_words,
+        "transcript_words": transcript_words,
+    }
+
+
+# --- 3. Tool call accuracy ---
 
 def score_tool_calls(trace: dict, case: dict) -> dict:
     """
@@ -110,7 +139,7 @@ def score_tool_calls(trace: dict, case: dict) -> dict:
     }
 
 
-# --- 3. Response quality (LLM-as-judge) ---
+# --- 4. Response quality (LLM-as-judge) ---
 
 def score_response(trace: dict, case: dict) -> dict:
     response = (trace["response_text"] or "").strip()
